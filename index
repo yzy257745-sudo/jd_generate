@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JD生成器</title>
+  <style>
+    html, body, #chat-container {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div id="chat-container"></div>
+
+<script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.19/libs/cn/index.js"></script>
+<script>
+  new CozeWebSDK.WebChatClient({
+    el: '#chat-container',
+    config: {
+      bot_id: '7604366168362893321',
+    },
+    componentProps: {
+      title: 'JD生成器',
+    },
+    ui: {
+      base: {
+        layout: 'embedded'
+      }
+    },
+    auth: {
+      type: 'token',
+      token: 'pat_5BY30WDIl3FjyTsWSwDBjGkMwoaXrNdgjZFXxIkXgKEZTb76w0PTvslBRbM4sjbF',
+      onRefreshToken: function () {
+        return 'pat_5BY30WDIl3FjyTsWSwDBjGkMwoaXrNdgjZFXxIkXgKEZTb76w0PTvslBRbM4sjbF'
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
