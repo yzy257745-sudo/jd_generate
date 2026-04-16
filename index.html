@@ -15,19 +15,19 @@
     .coze-chatbot-btn {
       display: none !important;
     }
-    /* 聊天窗口强制全屏 */
+    /* 聊天窗口强制全屏居中 */
     .coze-chatbot-window {
       position: fixed !important;
       top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
+      left: 50% !important;
+      right: auto !important;
       bottom: 0 !important;
+      transform: translateX(-50%) !important;
       width: 100% !important;
+      max-width: 800px !important;
       height: 100% !important;
-      max-width: 100% !important;
       max-height: 100% !important;
       border-radius: 0 !important;
-      transform: none !important;
     }
   </style>
 </head>
@@ -51,7 +51,6 @@
     }
   });
 
-  // 自动打开聊天窗口
   setTimeout(function () {
     client.showChatBot();
   }, 500);
