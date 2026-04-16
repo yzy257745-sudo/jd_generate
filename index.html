@@ -11,24 +11,6 @@
       height: 100%;
       overflow: hidden;
     }
-    /* 隐藏右下角浮球 */
-    .coze-chatbot-btn {
-      display: none !important;
-    }
-    /* 聊天窗口强制全屏居中 */
-    .coze-chatbot-window {
-      position: fixed !important;
-      top: 0 !important;
-      left: 50% !important;
-      right: auto !important;
-      bottom: 0 !important;
-      transform: translateX(-50%) !important;
-      width: 100% !important;
-      max-width: 800px !important;
-      height: 100% !important;
-      max-height: 100% !important;
-      border-radius: 0 !important;
-    }
   </style>
 </head>
 <body>
@@ -42,6 +24,9 @@
     componentProps: {
       title: 'JD生成器',
     },
+    userInfo: {
+      id: 'user_' + Date.now() + '_' + Math.random().toString(36).slice(2),
+    },
     auth: {
       type: 'token',
       token: 'pat_5BY30WDIl3FjyTsWSwDBjGkMwoaXrNdgjZFXxIkXgKEZTb76w0PTvslBRbM4sjbF',
@@ -53,6 +38,25 @@
 
   setTimeout(function () {
     client.showChatBot();
+
+    // 找到聊天窗口并强制居中
+    setTimeout(function () {
+      var allDivs = document.querySelectorAll('div');
+      for (var i = 0; i < allDivs.length; i++) {
+        var s = window.getComputedStyle(allDivs[i]);
+        if (s.position === 'fixed' && parseInt(s.width) > 300 && parseInt(s.height) > 300) {
+          allDivs[i].style.cssText += ';left:50%!important;right:auto!important;transform:translateX(-50%)!important;';
+        }
+      }
+      // 隐藏浮球
+      var btns = document.querySelectorAll('div');
+      for (var j = 0; j < btns.length; j++) {
+        var bs = window.getComputedStyle(btns[j]);
+        if (bs.position === 'fixed' && parseInt(bs.width) < 80 && parseInt(bs.height) < 80) {
+          btns[j].style.display = 'none';
+        }
+      }
+    }, 1000);
   }, 500);
 </script>
 
