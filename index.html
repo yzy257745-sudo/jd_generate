@@ -8,7 +8,7 @@
 
 <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.19/libs/cn/index.js"></script>
 <script>
-  new CozeWebSDK.WebChatClient({
+  var client = new CozeWebSDK.WebChatClient({
     config: {
       bot_id: '7604366168362893321',
     },
@@ -23,6 +23,10 @@
       }
     }
   });
+  // 自动弹出聊天窗口
+  setTimeout(function () {
+    client.showChatBot();
+  }, 500);
 </script>
 
 </body>
